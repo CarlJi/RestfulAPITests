@@ -8,9 +8,9 @@ import com.restfulapi.http.fluent.APIRequest;
 
 public class TestAPI {
 
-	private String URL = "https://dram-dev2.hpconnecteddev.com/deviceregmgmt/services/deviceregmgmt/users/devices/8bc530c6b387a9ee5a7368daf108143071f92d1c3f35a60a229eba41210db088/deviceId=68480";
+	private String URL = "";
 	
-	private String token = "Y2I4YTIzMGFjZTFmZmNlNWEwZTQ1OGQyYTM3NGFjOWIzZjI3MTA2YmRkMTM5ZmMxMjIzZGU1NDk1NjE2NzNkNDoxMTI3YmQ3YTZlNzYxMDJkOTJiMDEyMzEzZGVkcDZjZDpFUEM6MTQzNDQ0NDE0OTEzMzoxNDM3OTAwMTQ5MTMzOjQ6ZmFsc2U6cmt5d2Q3d2ZHWkl5UGoyamtqWEppQjY4VE1nWkx2Sm1JVDlyWDZHTlB3UHRubUNXUXlGQjhyMU1EMnd0YjlLYU5USkwrVVlpZkVvUWFuQUpIUkt4ei9xSjlsTTlTaWc3SVJ4SXVmSUlGaWJaTUE3ellTRjNyWHJaMFBZNE9tRXRST1p5WGtwWEhUYVJ6bkxPbStnUFYxZ0VSYldsb0ZKUTVsTVF3ZDBjMTJjMnZBSmpmNnBhc3FNUjlKa2ZRTCtZdUpRbThCZ3FhWjdxOHllM1k2U3J6YjRLWTRXQ3lJbUhPODNzSVpBTWhLRVVxOTFzZWVkOWJ2NW1OL0swR05ZSUF2KzBnTGNWNUxIN1ZUcVlXS0NSelJBNG1OeitueDRuRWVmZEtoYmZJblRna2VKRFBNc0o4bVdnRFNzbzZMaUtrQVZTdzJyNXZTVGs1T0ZqMHE1RVhBPT0===";
+	private String token = "=";
 	
 	private String body = "";
 	
@@ -22,9 +22,9 @@ public class TestAPI {
 	}
 	
 	@Test
-	public void test_SendPutRequest()
+	public void test_PutRequest()
 	{
-		APIRequest.PUT("https://pam-dev2.hpconnecteddev.com/pam/services/pam/users/credential/userId=cb8a230ace1ffce5a0e458d2a374ac9b3f27106bdd139fc1223de549561673d4")
-		.type(MediaType.APPLICATION_XML_TYPE).header("Authorization", "Bearer " + token ).body(body).invoke();
+		APIRequest.PUT("")
+		.type(MediaType.APPLICATION_XML_TYPE).header("Authorization", "Bearer " + token ).body(body).invoke().assertStatus(204);
 	}
 }
