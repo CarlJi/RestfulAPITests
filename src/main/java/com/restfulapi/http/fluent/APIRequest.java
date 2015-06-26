@@ -2,6 +2,7 @@ package com.restfulapi.http.fluent;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.ws.rs.HttpMethod;
 import javax.ws.rs.client.Client;
@@ -207,9 +208,9 @@ public class APIRequest {
 		WebTarget webTarget = client.target(uri);
 		if(!params.isEmpty())
 		{
-			for(String key: params.keySet())
+			for(Entry<String, String> key: params.entrySet())
 			{
-				webTarget = webTarget.queryParam(key, params.get(key));
+				webTarget = webTarget.queryParam(key.getKey(), key.getValue());
 			}
 		}
 
@@ -227,7 +228,17 @@ public class APIRequest {
 			}
 		}
 		
-		Response response = invocationBuilder.method(httpMethod, Entity.entity(body, contentType), Response.class);
+		Response response;
+		
+		if(body == null)
+		{
+			response= invocationBuilder.method(httpMethod, Response.class);
+		}
+		else
+		{
+			response = invocationBuilder.method(httpMethod, Entity.entity(body, contentType), Response.class);
+		}
+		
 		return new APIResponse(response);
 	}
 
