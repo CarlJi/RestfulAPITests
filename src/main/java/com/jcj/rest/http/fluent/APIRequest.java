@@ -1,8 +1,9 @@
-package com.restfulapi.http.fluent;
+package com.jcj.rest.http.fluent;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 import javax.ws.rs.HttpMethod;
 import javax.ws.rs.client.Client;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.filter.LoggingFilter;
 
 
@@ -201,10 +203,17 @@ public class APIRequest {
 	{
 		ClientConfig config = new ClientConfig();
 
-		//Important: we print all logs for each request and response
-		config.register(new LoggingFilter());
-
+		/**
+		 * Important: Jersey Invocation class will check "Entity must be null for http method DELETE."
+		 * so we can not send DELETE request with entity in payload, 
+		 * here we suppress this check
+		 */
+		config.property(ClientProperties.SUPPRESS_HTTP_COMPLIANCE_VALIDATION, true);
+		
 		Client client = ClientBuilder.newClient(config);
+		//Print all logs for each request and response
+		client.register(new LoggingFilter(Logger.getLogger(APIResponse.class.getName()), true));
+		
 		WebTarget webTarget = client.target(uri);
 		if(!params.isEmpty())
 		{
@@ -213,7 +222,7 @@ public class APIRequest {
 				webTarget = webTarget.queryParam(key.getKey(), key.getValue());
 			}
 		}
-
+		
 		Invocation.Builder invocationBuilder= webTarget.request();
 		if(acceptType != null)
 		{

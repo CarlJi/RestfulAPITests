@@ -1,4 +1,4 @@
-package com.restfulapi.http.fluent;
+package com.jcj.rest.http.fluent;
 
 import javax.ws.rs.core.Response;
 import static org.junit.Assert.assertEquals;
