@@ -40,7 +40,7 @@ Pom中引用了下面的工具：
 
 3. 运行时定制化Payload填充参数
 4. 
-    `String payload = String.format(loadFile("jsonfile.json"), "62ab92bab49692ea813c99b3d2b4ebbdb3aa99ffede992762b5edc612f162814", "f57405304f15cba90c214252f85b925407704d3bb67b598bb49ada0460161b63");`
+    `String payload = String.format(loadFile("jsonfile.json"), "abc", "edf");`
    
 
 4. 数据分离，在Property文件管理参数
@@ -48,3 +48,6 @@ Pom中引用了下面的工具：
     `String uri = getValue("get.uri");`
 
 
+##未完待续##
+
+当你的Test Cases 变的很多时，如何管理你的case呢？下一步打算结合我的Junit Extension工具，来丰富这个需求。
