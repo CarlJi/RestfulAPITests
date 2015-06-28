@@ -1,0 +1,7 @@
+{
+    "deviceWpId": "%s",
+    "wpId": "%s",
+    "userAttributes": {
+        "userRole": "ADMIN" 
+    }
+}

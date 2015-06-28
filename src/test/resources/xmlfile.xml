@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<address xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<street1>NO.22314 sf sdf ShangHai</street1>
+	<street2 />
+	<street3 />
+	<city>Vancouver</city>
+	<state>WA</state>
+	<zipCode>98231</zipCode>
+	<countryCode>US</countryCode>
+	<county>wake</county>
+	<label>test2</label>
+	<firstName>Otto2</firstName>
+	<lastName>Tester2</lastName>
+	<company>Test Company2</company>
+</address>

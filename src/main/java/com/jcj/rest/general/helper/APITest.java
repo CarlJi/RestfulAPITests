@@ -2,9 +2,17 @@ package com.jcj.rest.general.helper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import java.util.Random;
 
 import org.apache.commons.io.IOUtils;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -16,6 +24,58 @@ import org.apache.commons.io.IOUtils;
  */
 public abstract class APITest {
 
+	 @Rule 
+	 public TestName testCaseName = new TestName();
+	 
+	 protected static final Logger LOGGER = LoggerFactory.getLogger(APITest.class);
+	 private static String envfile = "env.properties";
+	 private static Properties prop;
+	 
+	 @BeforeClass
+	 public static void setup()
+	 {
+		 prop = initProperties();
+	 }
+	 
+	 @Before
+	 public void printEachCaseName()
+	 {
+		 LOGGER.info("Test Case Name: " + testCaseName.getMethodName());
+	 }
+	 
+	 /**
+	  * Load properties from field {@link envfile} in the classpath
+	  * 
+	  * @return
+	  */
+	 public static Properties initProperties()
+	 {
+		 Properties prop = new Properties();
+		 
+		 try{
+			 prop.load(APITest.class.getClassLoader().getResourceAsStream(envfile));
+		 }catch(Exception ex){
+			 throw new RuntimeException("Unable to load property file " + envfile);
+		 }
+		 
+		 return prop;
+	 }
+	 
+	 /**
+	  * Get value based on the key from the properties file
+	  * 
+	  * @param key
+	  *        The key defined in the properies file
+	  * @return
+	  *        The value related to the key
+	  */
+	 public static String getValue(String key)
+	 {
+		 String value = prop.getProperty(key);
+		 Assert.assertNotNull(value, String.format("%s key is missing", key));
+		 
+		 return value;
+	 }
 
 	/**
 	 * Load file in the classpath as String
@@ -56,6 +116,18 @@ public abstract class APITest {
 		}
 		
 		return sb.toString();
+	}
+
+
+
+	public static String getEnvfile() {
+		return envfile;
+	}
+
+
+
+	public static void setEnvfile(String envfile) {
+		APITest.envfile = envfile;
 	}
 
 }
