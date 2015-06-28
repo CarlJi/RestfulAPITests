@@ -51,3 +51,11 @@ Pom中引用了下面的工具：
 ##未完待续##
 
 当你的Test Cases 变的很多时，如何管理你的case呢？下一步打算结合我的Junit Extension工具，来丰富这个需求。
+
+
+
+### Contact me ? ###
+
+Email: **jinsdu@outlook.com** 
+
+Blog: <http://www.cnblogs.com/jinsdu/>
