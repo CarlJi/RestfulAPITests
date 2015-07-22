@@ -48,9 +48,9 @@ Pom中引用了下面的工具：
     `String uri = getValue("get.uri");`
 
 
-##未完待续##
+##灵活的执行Test Cases##
 
-当你的Test Cases 变的很多时，如何管理你的case呢？下一步打算结合我的Junit Extension工具，来丰富这个需求。
+当你的Test Cases 变的很多时，如何管理你的case呢？这时候就可以借鉴[JCategory](https://github.com/CarlJi/JCategory)，来丰富这个需求。
 
 
 
