@@ -8,7 +8,7 @@
 
     APIRequest.GET(URL).header("Authorization", "Bearer " + token).invoke().assertStatus(200).assertBody(expectedBody);
 
-##用到的工具##
+## 用到的工具
 本框架是使用Maven进行项目管理，所有的依赖项目都已经加到pom文件，所以你只要在你的IDE中Import这个项目就可以开始写测试代码了。
 
 Pom中引用了下面的工具：
@@ -18,7 +18,7 @@ Pom中引用了下面的工具：
 - Apache Commons IO
 - SLF4J
 
-##如何使用##
+## 如何使用
 
 所有的HTTP Request都从`APIRequest`这个类出发，一步步构建，最终调用Invoke方法发送HTTP 请求。
 
@@ -48,13 +48,13 @@ Pom中引用了下面的工具：
     `String uri = getValue("get.uri");`
 
 
-##灵活的执行Test Cases##
+## 灵活的执行Test Cases
 
 当你的Test Cases 变的很多时，如何管理你的case呢？这时候就可以借鉴[JCategory](https://github.com/CarlJi/JCategory)，来丰富这个需求。
 
 
 
-### Contact me ? ###
+### Contact me? 
 
 Email: **jinsdu@outlook.com** 
 
